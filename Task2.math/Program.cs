@@ -29,7 +29,7 @@ namespace Task2.math
             var c = a * Math.Sin(radC) / Math.Sin(radA);
 
             var perimeter = a + b + c;
-
+             
             var s = perimeter / 2;
             var area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
 
