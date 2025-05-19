@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTravel", "LibraryTravel.csproj", "{BA3DFAD5-EC7A-4918-B514-C5983D1D5ED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsLab", "..\UnitTestsLab\UnitTestsLab.csproj", "{BE039ECF-5C43-4B0A-AE95-8EAAE34CAC14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA3DFAD5-EC7A-4918-B514-C5983D1D5ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3DFAD5-EC7A-4918-B514-C5983D1D5ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3DFAD5-EC7A-4918-B514-C5983D1D5ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3DFAD5-EC7A-4918-B514-C5983D1D5ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE039ECF-5C43-4B0A-AE95-8EAAE34CAC14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE039ECF-5C43-4B0A-AE95-8EAAE34CAC14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE039ECF-5C43-4B0A-AE95-8EAAE34CAC14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE039ECF-5C43-4B0A-AE95-8EAAE34CAC14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1152315F-F9A5-4F3F-912E-E7A2B8D78D5B}
+	EndGlobalSection
+EndGlobal
