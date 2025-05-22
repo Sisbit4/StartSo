@@ -6,55 +6,50 @@ using System.Threading.Tasks;
 
 namespace TravelAgency
 {
-    using System;
-
-    namespace TravelAgency
+    public class Tourist 
     {
-        public class Tourist
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public readonly string TourCode;
+        public DateTime TourStartDate { get; set; }
+        public TimeSpan TourDuration { get; set; }
+        public double TourPrice { get; set; }
+        public PaymentType PaymentMethod { get; set; } 
+
+        public DateTime TourEndDate => TourStartDate.Add(TourDuration);
+
+        public Tourist(string name, string surname, string tourCode, string tourStartDate, TimeSpan tourDuration, double tourPrice, PaymentType paymentMethod)
         {
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public readonly string TourCode;
-            public DateTime TourStartDate { get; set; }
-            public TimeSpan TourDuration { get; set; }
-            public double TourPrice { get; set; }
-            public PaymentType PaymentMethod { get; set; } 
+            Name = name;
+            Surname = surname;
+            TourCode = tourCode;
 
-            public DateTime TourEndDate => TourStartDate.Add(TourDuration);
+            if (!DateTime.TryParse(tourStartDate, out var startDate))
+                throw new ArgumentException("Неверный формат даты начала тура");
 
-            public Tourist(string name, string surname, string tourCode, string tourStartDate, TimeSpan tourDuration, double tourPrice, PaymentType paymentMethod)
+            TourStartDate = startDate;
+            TourDuration = tourDuration;
+            TourPrice = tourPrice;
+            PaymentMethod = paymentMethod;
+        }
+
+        public virtual string[] GetInfo()
+        {
+            var info = new string[3];
+            info[0] = $"{Name} {Surname}";
+            info[1] = $"Тур: {TourCode}. Дата начала: {TourStartDate:d}. Продолжительность: {TourDuration.Days} дней.";
+
+            string paymentMethod;
+            switch (PaymentMethod)
             {
-                Name = name;
-                Surname = surname;
-                TourCode = tourCode;
-
-                if (!DateTime.TryParse(tourStartDate, out var startDate))
-                    throw new ArgumentException("Неверный формат даты начала тура");
-
-                TourStartDate = startDate;
-                TourDuration = tourDuration;
-                TourPrice = tourPrice;
-                PaymentMethod = paymentMethod;
+                case PaymentType.Cash: paymentMethod = "наличные"; break;
+                case PaymentType.CreditCard: paymentMethod = "банковской картой"; break;
+                case PaymentType.BankTransfer: paymentMethod = "перечисление по счету"; break;
+                default: paymentMethod = "неизвестно"; break;
             }
 
-            public virtual string[] GetInfo()
-            {
-                var info = new string[3];
-                info[0] = $"{Name} {Surname}";
-                info[1] = $"Тур: {TourCode}. Дата начала: {TourStartDate:d}. Продолжительность: {TourDuration.Days} дней.";
-
-                string paymentMethod;
-                switch (PaymentMethod)
-                {
-                    case PaymentType.Cash: paymentMethod = "наличные"; break;
-                    case PaymentType.CreditCard: paymentMethod = "банковской картой"; break;
-                    case PaymentType.BankTransfer: paymentMethod = "перечисление по счету"; break;
-                    default: paymentMethod = "неизвестно"; break;
-                }
-
-                info[2] = $"Стоимость: {TourPrice}. Тип оплаты: {paymentMethod}.";
-                return info;
-            }
+            info[2] = $"Стоимость: {TourPrice}. Тип оплаты: {paymentMethod}.";
+            return info;
         }
     }
 }

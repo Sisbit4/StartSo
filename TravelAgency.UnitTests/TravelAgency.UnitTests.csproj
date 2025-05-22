@@ -112,6 +112,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiversityTouristsTests.cs" />
     <Compile Include="TouristTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
