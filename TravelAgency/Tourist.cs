@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelAgency
 {
-    public class Tourist 
+    public class Tourist : IComparable<Tourist>
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -31,6 +31,20 @@ namespace TravelAgency
             TourDuration = tourDuration;
             TourPrice = tourPrice;
             PaymentMethod = paymentMethod;
+        }
+
+        public int CompareTo(Tourist other)
+        {
+            if (other == null)
+                return 1;
+
+            int surnameCompare = string.Compare(Surname, other.Surname,
+                                              StringComparison.CurrentCultureIgnoreCase);
+            if (surnameCompare != 0)
+                return surnameCompare;
+
+            return string.Compare(Name, other.Name,
+                                 StringComparison.CurrentCultureIgnoreCase);
         }
 
         public virtual string[] GetInfo()

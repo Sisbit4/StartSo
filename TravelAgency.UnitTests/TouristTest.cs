@@ -39,5 +39,38 @@ namespace TravelAgency.UnitTests
             Assert.That(info[1], Is.EqualTo("Тур: EUR-123. Дата начала: 15.07.2023. Продолжительность: 14 дней."));
             Assert.That(info[2], Is.EqualTo("Стоимость: 50000. Тип оплаты: банковской картой."));
         }
+
+        [Test]
+        public void CompareToTest1()
+        {
+            var tourist1 = new Tourist("Иван", "Алексеев", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+            var tourist2 = new Tourist("Петр", "Борисов", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+
+            Assert.That(tourist1.CompareTo(tourist2), Is.LessThan(0));
+        }
+
+        [Test]
+        public void CompareToTest2()
+        {
+            var tourist1 = new Tourist("Анна", "Иванова", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+            var tourist2 = new Tourist("Борис", "Иванов", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+
+            Assert.That(tourist1.CompareTo(tourist2), Is.LessThan(0));
+        }
+
+        [Test]
+        public void CompareToTest3()
+        {
+            var tourist1 = new Tourist("Иван", "Иванов", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+            var tourist2 = new Tourist("Иван", "Иванов", "TOUR-1", "01.06.2023",
+                                      TimeSpan.FromDays(7), 30000, PaymentType.Cash);
+
+            Assert.That(tourist1.CompareTo(tourist2), Is.EqualTo(0));
+        }
     }
 }
